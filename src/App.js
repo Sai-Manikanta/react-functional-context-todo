@@ -1,7 +1,16 @@
+import Header from "./components/Header";
+import TodoAddForm from "./components/TodoAddForm";
+import TodoList from "./components/TodoList";
+import BooksContextProvider from "./contexts/BooksContext";
+
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-center">Hello world!</h1>
+    <div className="max-w-lg mx-auto p-3">
+      <BooksContextProvider>
+        <Header />
+        <TodoList />
+        <TodoAddForm />
+      </BooksContextProvider>
     </div>
   );
 }
