@@ -3,7 +3,7 @@ import { BooksContext } from '../contexts/BooksContext';
 import { v4 as uuidv4 } from 'uuid';
 
 const TodoAddForm = () => {
-    const { addBook } = useContext(BooksContext);
+    const { dispatch } = useContext(BooksContext);
 
     const nameInputRef = useRef();
     const authorInputRef = useRef();
@@ -15,7 +15,13 @@ const TodoAddForm = () => {
         const author = authorInputRef.current.value;
         const todo = { id: uuidv4(), name, author };
 
-        addBook(todo);
+        dispatch({
+            type: 'ADD_BOOK',
+            payload: {
+                book: todo
+            }
+        });
+
         nameInputRef.current.value = "";
         authorInputRef.current.value = "";
     }

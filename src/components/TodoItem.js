@@ -3,10 +3,15 @@ import { useContext } from 'react';
 import { BooksContext } from '../contexts/BooksContext';
 
 const TodoItem = ({ book }) => {
-    const { removeBook } = useContext(BooksContext);
+    const { dispatch } = useContext(BooksContext);
     
     const handleDelete = (bookId) => {
-        removeBook(bookId);
+        dispatch({
+            type: 'REMOVE_BOOK',
+            payload: {
+                id: bookId
+            }
+        });
     }
 
     return ( 
