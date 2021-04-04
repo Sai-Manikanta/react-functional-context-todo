@@ -2,18 +2,7 @@ import { useReducer, createContext } from 'react'
 
 export const BooksContext = createContext();
 
-const booksReducer = (books, action) => { // state = books
-    switch(action.type){
-        case 'ADD_BOOK':
-            return [...books, action.payload.book];
-        break;
-        case 'REMOVE_BOOK':
-            return books.filter(book => book.id !== action.payload.id);
-        break;
-        default:
-            return books;
-    }
-}
+import booksReducer from '../reducers/booksReducer';
 
 const BooksContextProvider = ({ children }) => {
     const [books, dispatch] = useReducer(booksReducer, [
